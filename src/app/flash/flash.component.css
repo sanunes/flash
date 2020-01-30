@@ -23,3 +23,16 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.card-header.correct {
+  background: #51be51;
+}
+
+.card-header.incorrect {
+  background: red;
+}
+
+.correct .card-header-title,
+.incorrect .card-header-title {
+  color: white;
+}

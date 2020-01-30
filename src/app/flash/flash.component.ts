@@ -7,16 +7,44 @@ import { IFlash } from './../flash.model';
   styleUrls: ['./flash.component.css']
 })
 export class FlashComponent {
+  @Output() onToggleCard = new EventEmitter();
+  @Output() onDelete = new EventEmitter();
+  @Output() onEdit = new EventEmitter();
+  @Output() onRememberedChange = new EventEmitter();
+
   @Input() flash: IFlash = {
-    id: 1,
-    question: 'Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1Q1?',
-    answer: 'R1R1R1R1R1R1R1R1R1R1R1R1R1',
+    question: '',
+    answer: '',
+    id: 0,
     show: false,
   };
 
-  @Output() onToggleCard = new EventEmitter();
   toggleCard() {
     this.onToggleCard.emit(this.flash.id);
   }
 
+  deleteFlash() {
+    console.log('THIS ID: ', this.flash.id);
+    this.onDelete.emit(this.flash.id);
+  }
+
+  editFlash() {
+    this.onEdit.emit(this.flash.id);
+  }
+
+  markCorrect() {
+    console.log('marking correct');
+    this.onRememberedChange.emit({
+      id: this.flash.id,
+      flag: 'correct',
+    });
+  }
+
+  markIncorrect() {
+    console.log('marking incorrect');
+    this.onRememberedChange.emit({
+      id: this.flash.id,
+      flag: 'incorrect',
+    });
+  }
 }
