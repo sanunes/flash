@@ -3,5 +3,5 @@ export interface IFlash {
   answer: string;
   show: boolean;
   id: number;
-  remembered?: 'correct' | 'incorrect';
+  remembered?: string;
 }

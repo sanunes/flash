@@ -47,7 +47,7 @@
     </button>
   </ng-template>
 </form>
-<div class="flashs">
+<div class="flashs" *ngIf="flashs$ | async as flashs">
   <app-flash
     *ngFor="let flash of flashs; trackBy: trackByFlashId"
     [flash]="flash"
